@@ -37,7 +37,7 @@
 }
 
 html {
-  scroll-behavior: auto; /* Lenis maneja el smooth scroll */
+  scroll-behavior: smooth; /* Smooth scroll nativo del navegador */
   font-size: 16px;
 }
 
@@ -82,6 +82,7 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+  content-visibility: auto;
 }
 
 button {
@@ -221,6 +222,30 @@ button {
   color: var(--primary-green);
 }
 
+/* Logo image inside header */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.logo-img {
+  display: block;
+  height: 40px;
+  width: auto;
+}
+
+.logo-text {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--primary-green);
+  font-size: 1.05rem;
+  margin-left: 0.4rem;
+  line-height: 1;
+}
+
+
 .nav {
   display: flex;
   gap: var(--spacing-md);
@@ -253,39 +278,6 @@ button {
   gap: var(--spacing-sm);
 }
 
-.language-switcher {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.lang-btn {
-  padding: 0.5rem 1rem;
-  background-color: transparent;
-  color: var(--dark-blue);
-  border: 1px solid #ddd;
-  border-radius: var(--border-radius);
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.lang-btn:hover {
-  background-color: rgba(42, 157, 143, 0.1);
-  border-color: var(--primary-green);
-  transform: translateY(-2px);
-}
-
-.lang-btn.active {
-  background-color: var(--primary-green);
-  color: var(--white-text);
-  border-color: var(--primary-green);
-}
-
-.lang-btn.active:hover {
-  background-color: #238276;
-}
-
 /* ===================================
    HERO SECTION
    =================================== */
@@ -294,7 +286,8 @@ button {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 80px;
+  padding-top: 100px;
+  padding-bottom: 100px;
   overflow: hidden;
 }
 
@@ -313,6 +306,7 @@ button {
   background-blend-mode: multiply;
   z-index: -1;
   animation: slowZoom 30s ease-in-out infinite alternate;
+  will-change: transform;
 }
 
 @keyframes slowZoom {
@@ -387,9 +381,9 @@ button {
 }
 
 .hero-title {
-  font-size: clamp(2.75rem, 7vw, 5.5rem);
+  font-size: clamp(4rem, 10vw, 7.5rem);
   font-weight: 800;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
   text-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
   letter-spacing: -1.5px;
   line-height: 1.1;
@@ -401,12 +395,12 @@ button {
 }
 
 .hero-subtitle {
-  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
-  margin-bottom: var(--spacing-lg);
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  margin-bottom: var(--spacing-xl);
   line-height: 1.7;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
   font-weight: 400;
-  max-width: 750px;
+  max-width: 850px;
   margin-left: auto;
   margin-right: auto;
   opacity: 0.95;
@@ -1003,7 +997,7 @@ button {
 }
 
 .mega-number {
-  font-size: clamp(4rem, 8vw, 7rem);
+  font-size: clamp(5rem, 10vw, 9rem);
   font-weight: 900;
   line-height: 1;
   background: linear-gradient(135deg, var(--primary-green), var(--accent-yellow));
@@ -2453,6 +2447,9 @@ button {
   padding: 2.5rem 2rem;
   position: relative;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
 }
 
 .flow-card:hover {
@@ -2508,6 +2505,7 @@ button {
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 0.95rem;
+  flex-grow: 1;
 }
 
 .flow-tags {
@@ -2515,6 +2513,7 @@ button {
   gap: 0.5rem;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: auto;
 }
 
 .tag {
@@ -3117,8 +3116,7 @@ button {
   align-items: stretch;
   justify-content: center;
   flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /* ===================================
@@ -4196,5 +4194,84 @@ button {
   .cta-button {
     padding: 12px;
     font-size: 0.9rem;
+  }
+}
+
+/* ========================================
+   SCROLL TO TOP BUTTON
+   ======================================== */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  min-width: 56px;
+  min-height: 56px;
+  background: linear-gradient(135deg, var(--primary-green), var(--accent-yellow));
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.6rem;
+  box-shadow: 0 4px 20px rgba(42, 157, 143, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100px) scale(0.8);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 9999;
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  animation: pulseButton 2s ease-in-out infinite;
+}
+
+@keyframes pulseButton {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(42, 157, 143, 0.5);
+  }
+  50% {
+    box-shadow: 0 4px 30px rgba(42, 157, 143, 0.8);
+  }
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 6px 35px rgba(42, 157, 143, 0.7);
+  animation: none;
+}
+
+.scroll-to-top:active {
+  transform: translateY(-3px) scale(0.98);
+}
+
+.scroll-to-top svg {
+  color: white;
+  width: 24px;
+  height: 24px;
+}
+
+.scroll-to-top__label {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 20px;
+    right: 20px;
+    padding: 0.7rem 1rem;
+    min-width: 45px;
+    min-height: 45px;
+  }
+
+  .scroll-to-top__label {
+    display: none;
   }
 }

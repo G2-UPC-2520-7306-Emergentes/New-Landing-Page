@@ -2,167 +2,27 @@
 // MAIN.JS - FoodChain Landing Page
 // ===================================
 
-// Variables globales
-let currentLanguage = localStorage.getItem('selectedLanguage') || 'es';
-let translations = {};
-
 // ===================================
-// 1. INICIALIZACIÓN DE LENIS (Smooth Scroll)
+// 1. NAVEGACIÓN SUAVE (Smooth Scroll Nativo)
 // ===================================
-function initLenis() {
-  const lenis = new Lenis({
-    duration: 0.8,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smooth: true,
-    smoothTouch: false,
-    lerp: 0.1,
-    infinite: false,
-  });
-
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-
-  requestAnimationFrame(raf);
-
-  lenis.on('scroll', () => {
-    ScrollTrigger.update();
-  });
-
+function initSmoothNavigation() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
       if (target) {
-        lenis.scrollTo(target, {
-          offset: -80,
-          duration: 0.6,
-          easing: (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
+        const offsetTop = target.offsetTop - 80; // Offset para el header
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
         });
       }
     });
   });
-
-  return lenis;
 }
 
 // ===================================
-// 2. SISTEMA DE INTERNACIONALIZACIÓN (i18n)
-// ===================================
-async function loadTranslations() {
-  try {
-    // Cargar el idioma guardado o español por defecto
-    const response = await fetch(`../i18n/${currentLanguage}.json`);
-    translations = await response.json();
-    updateLanguage(currentLanguage);
-  } catch (error) {
-    console.error('Error loading translations:', error);
-    // Si falla, intentar cargar español como fallback
-    try {
-      const fallbackResponse = await fetch('../i18n/es.json');
-      translations = await fallbackResponse.json();
-      currentLanguage = 'es';
-      updateLanguage('es');
-    } catch (fallbackError) {
-      console.error('Error loading fallback translations:', fallbackError);
-    }
-  }
-}
-
-async function updateLanguage(lang) {
-  currentLanguage = lang;
-
-  // Guardar el idioma seleccionado en localStorage
-  localStorage.setItem('selectedLanguage', lang);
-
-  // Si no tenemos las traducciones cargadas, cargarlas
-  if (!translations || Object.keys(translations).length === 0) {
-    try {
-      const response = await fetch(`../i18n/${lang}.json`);
-      translations = await response.json();
-    } catch (error) {
-      console.error(`Error loading ${lang} translations:`, error);
-      return;
-    }
-  }
-
-  // Actualizar todos los elementos con data-i18n
-  document.querySelectorAll('[data-i18n]').forEach(element => {
-    const key = element.getAttribute('data-i18n');
-    if (translations[key]) {
-      element.textContent = translations[key];
-    }
-  });
-
-  // Actualizar placeholders
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
-    const key = element.getAttribute('data-i18n-placeholder');
-    if (translations[key]) {
-      element.placeholder = translations[key];
-    }
-  });
-
-  // Actualizar título de la página
-  if (translations.page_title) {
-    document.title = translations.page_title;
-  }
-
-  // Cambiar el atributo lang del documento
-  document.documentElement.lang = lang;
-
-  // Actualizar botones activos
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.remove('active');
-    if (btn.getAttribute('data-lang') === lang) {
-      btn.classList.add('active');
-    }
-  });
-
-  // Reinicializar los iconos de Lucide después de cambiar el idioma
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
-  }
-}
-
-function initLanguageSwitcher() {
-  const langButtons = document.querySelectorAll('.lang-btn');
-
-  if (!langButtons.length) {
-    console.warn('No language buttons found');
-    return;
-  }
-
-  langButtons.forEach(btn => {
-    // Remover listeners previos si existen
-    btn.removeEventListener('click', handleLanguageChange);
-
-    // Añadir el nuevo listener
-    btn.addEventListener('click', handleLanguageChange);
-  });
-
-  // Función handler separada para mejor manejo
-  async function handleLanguageChange(e) {
-    e.preventDefault();
-    const lang = this.getAttribute('data-lang');
-
-    if (lang && (lang === 'es' || lang === 'en')) {
-      console.log('Changing language to:', lang);
-      
-      // Cargar el nuevo archivo de idioma
-      try {
-        const response = await fetch(`../i18n/${lang}.json`);
-        translations = await response.json();
-        await updateLanguage(lang);
-      } catch (error) {
-        console.error(`Error loading ${lang} translations:`, error);
-      }
-    }
-  }
-}
-
-// ===================================
-// 3. ANIMACIONES CON GSAP Y SCROLLTRIGGER
+// 2. ANIMACIONES CON GSAP Y SCROLLTRIGGER
 // ===================================
 function initAnimations() {
   gsap.registerPlugin(ScrollTrigger);
@@ -311,7 +171,7 @@ function initAnimations() {
 }
 
 // ===================================
-// 4. ANIMACIÓN DE LA TIMELINE
+// 3. ANIMACIÓN DE LA TIMELINE
 // ===================================
 function initTimelineAnimation() {
   const timelineSteps = document.querySelectorAll('.timeline-step');
@@ -356,7 +216,7 @@ function initTimelineAnimation() {
 }
 
 // ===================================
-// 5. SISTEMA DE TABS
+// 4. SISTEMA DE TABS
 // ===================================
 function initTabs() {
   const tabBtns = document.querySelectorAll('.tab-btn');
@@ -389,7 +249,7 @@ function initTabs() {
 }
 
 // ===================================
-// 6. FORMULARIO DE CONTACTO
+// 5. FORMULARIO DE CONTACTO
 // ===================================
 function initContactForm() {
   const form = document.getElementById('contactForm');
@@ -407,18 +267,14 @@ function initContactForm() {
 
       console.log('Form submitted:', data);
 
-      const successMessage = currentLanguage === 'es'
-        ? '¡Gracias! Nos pondremos en contacto pronto.'
-        : 'Thank you! We will contact you soon.';
-
-      alert(successMessage);
+      alert('¡Gracias! Nos pondremos en contacto pronto.');
       form.reset();
     });
   }
 }
 
 // ===================================
-// 7. INICIALIZAR ICONOS DE LUCIDE
+// 6. INICIALIZAR ICONOS DE LUCIDE
 // ===================================
 function initLucideIcons() {
   if (typeof lucide !== 'undefined') {
@@ -431,7 +287,7 @@ function initLucideIcons() {
 }
 
 // ===================================
-// 8. HEADER SCROLL EFFECT
+// 7. HEADER SCROLL EFFECT
 // ===================================
 function initHeaderScroll() {
   const header = document.querySelector('.header');
@@ -446,17 +302,53 @@ function initHeaderScroll() {
 }
 
 // ===================================
+// 8. SCROLL TO TOP BUTTON - FLOTANTE
+// ===================================
+function initScrollToTop() {
+  const scrollBtn = document.getElementById('scrollToTop');
+  if (!scrollBtn) {
+    console.warn('Scroll to top button not found');
+    return;
+  }
+
+  let ticking = false;
+
+  // Mostrar/ocultar botón flotante según scroll (optimizado)
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        // Aparece cuando el usuario hace scroll hacia abajo más de 200px
+        if (window.scrollY > 200) {
+          scrollBtn.classList.add('visible');
+        } else {
+          scrollBtn.classList.remove('visible');
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // Click para volver al inicio con scroll suave
+  scrollBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+
+// ===================================
 // 9. INICIALIZACIÓN PRINCIPAL
 // ===================================
-async function init() {
-  await loadTranslations();
-  
-  initLenis();
-  initLanguageSwitcher();
+function init() {
+  initSmoothNavigation(); // Navegación suave nativa del navegador
   initTabs();
   initContactForm();
   initLucideIcons();
   initHeaderScroll();
+  initScrollToTop();
 
   requestAnimationFrame(() => {
     initAnimations();
@@ -487,3 +379,14 @@ ScrollTrigger.config({
   autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load',
   ignoreMobileResize: true
 });
+
+// Optimización: Reducir ejecuciones durante scroll
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      ticking = false;
+    });
+    ticking = true;
+  }
+}, { passive: true });

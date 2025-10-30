@@ -4,22 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="FoodChain - La Verdad de tus Alimentos, Verificada por Blockchain">
-  <title data-i18n="page_title">FoodChain | La Verdad en tus Alimentos</title>
+  <meta name="theme-color" content="#2A9D8F">
+  <title>FoodChain | La Verdad en tus Alimentos</title>
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet"></noscript>
 
   <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@0.294.0/dist/umd/lucide.min.js" defer></script>
 
   <!-- GSAP & ScrollTrigger -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 
-  <!-- Lenis Smooth Scroll -->
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+  <link rel="shortcut icon" href="../assets/icons/favicon.ico">
 
   <!-- Styles -->
   <link rel="stylesheet" href="../css/style.css">
@@ -30,20 +39,22 @@
   <header class="header">
     <div class="container">
       <div class="header-content">
-        <a href="#hero" class="logo">FoodChain</a>
+        <a href="#hero" class="logo" aria-label="FoodChain">
+          <img src="../assets/img/logo.jpeg" alt="FoodChain logo" class="logo-img">
+          <span class="logo-text">FoodChain</span>
+        </a>
 
         <nav class="nav">
-          <a href="#solucion" data-i18n="nav_solution">Solución</a>
-          <a href="#casos" data-i18n="nav_usecases">Casos de Uso</a>
-          <a href="#tecnologia" data-i18n="nav_technology">Tecnología</a>
+          <a href="#problema">Problema</a>
+          <a href="#solucion">Solución</a>
+          <a href="#casos">Casos de Uso</a>
+          <a href="#segmentos">Segmentos</a>
+          <a href="#tecnologia">Tecnología</a>
+          <a href="#equipo">Equipo</a>
         </nav>
 
         <div class="header-actions">
-          <button class="btn-demo" data-i18n="nav_cta">Solicitar Demo</button>
-          <div class="language-switcher">
-            <button class="lang-btn active" data-lang="es">ES</button>
-            <button class="lang-btn" data-lang="en">EN</button>
-          </div>
+          <a class="btn-demo" href="https://frontend15-steel.vercel.app/login">Solicitar Demo</a>
         </div>
       </div>
     </div>
@@ -57,34 +68,34 @@
       <div class="hero-content">
         <div class="hero-badge">
           <i data-lucide="shield-check"></i>
-          <span data-i18n="hero_badge">Blockchain Certificado</span>
+          <span>Blockchain Certificado</span>
         </div>
-        <h1 class="hero-title" data-i18n="hero_title">La Verdad de tus Alimentos, Verificada por Blockchain.</h1>
-        <p class="hero-subtitle" data-i18n="hero_subtitle">Trazabilidad transparente desde la granja hasta tu mesa. Combate el fraude alimentario y recupera la confianza del consumidor con tecnología blockchain.</p>
+        <h1 class="hero-title">La Verdad de tus Alimentos, Verificada por Blockchain.</h1>
+        <p class="hero-subtitle">Trazabilidad transparente desde la granja hasta tu mesa. Combate el fraude alimentario y recupera la confianza del consumidor con tecnología blockchain.</p>
         <div class="hero-buttons">
-          <button class="btn btn-primary" data-i18n="hero_cta_primary">Comenzar Ahora</button>
-          <button class="btn btn-secondary" data-i18n="hero_cta_secondary">Ver Demo</button>
+          <button class="btn btn-primary">Comenzar Ahora</button>
+          <button class="btn btn-secondary">Ver Demo</button>
         </div>
         <div class="hero-stats">
           <div class="stat-item">
             <i data-lucide="check-circle"></i>
             <div>
               <strong>2,500+</strong>
-              <span data-i18n="hero_stat1">Productos rastreados</span>
+              <span>Productos rastreados</span>
             </div>
           </div>
           <div class="stat-item">
             <i data-lucide="globe"></i>
             <div>
               <strong>38</strong>
-              <span data-i18n="hero_stat2">Países conectados</span>
+              <span>Países conectados</span>
             </div>
           </div>
           <div class="stat-item">
             <i data-lucide="users"></i>
             <div>
               <strong>500K+</strong>
-              <span data-i18n="hero_stat3">Consumidores confiando</span>
+              <span>Consumidores confiando</span>
             </div>
           </div>
         </div>
@@ -113,28 +124,16 @@
       <!-- Problema 1: Fraude Alimentario -->
       <div class="problem-split" data-theme="red">
         <div class="split-visual">
-          <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1200&h=800&fit=crop&q=80" alt="Food Fraud">
+          <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1200&h=800&fit=crop&q=80" alt="Food Fraud" loading="lazy">
           <div class="visual-gradient"></div>
-          <div class="visual-icon">
-            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <line x1="9" y1="9" x2="15" y2="15"/>
-              <line x1="15" y1="9" x2="9" y2="15"/>
-            </svg>
-          </div>
         </div>
         <div class="split-content">
           <div class="stat-mega">
             <div class="mega-number">85%</div>
             <div class="mega-label">Impacto Global</div>
-            <div class="status-pill danger">
-              <span class="pulse-dot"></span>
-              Nivel Crítico
-            </div>
           </div>
           <h3 class="problem-heading">Fraude Alimentario</h3>
-          <div class="highlight-stat">$40 Mil Millones</div>
-          <p class="problem-text">Se pierden anualmente por fraude alimentario a nivel global. La falta de trazabilidad y verificación permite que productos adulterados lleguen al mercado.</p>
+          <p class="problem-text">El fraude alimentario provoca pérdidas millonarias cada año. Sin trazabilidad, productos adulterados llegan al mercado.</p>
           <div class="trend-indicator">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -148,28 +147,16 @@
       <!-- Problema 2: Información Falsa -->
       <div class="problem-split reverse" data-theme="orange">
         <div class="split-visual">
-          <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=1200&h=800&fit=crop&q=80" alt="False Information">
+          <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=1200&h=800&fit=crop&q=80" alt="False Information" loading="lazy">
           <div class="visual-gradient"></div>
-          <div class="visual-icon">
-            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-              <line x1="12" y1="9" x2="12" y2="13"/>
-              <line x1="12" y1="17" x2="12.01" y2="17"/>
-            </svg>
-          </div>
         </div>
         <div class="split-content">
           <div class="stat-mega">
             <div class="mega-number">23%</div>
             <div class="mega-label">Alimentos Afectados</div>
-            <div class="status-pill warning">
-              <span class="pulse-dot"></span>
-              Alto Riesgo
-            </div>
           </div>
           <h3 class="problem-heading">Información Falsa</h3>
-          <div class="highlight-stat">23%</div>
-          <p class="problem-text">De los alimentos contienen información falsa o engañosa sobre su origen. Las etiquetas no siempre reflejan la realidad de la cadena de suministro.</p>
+          <p class="problem-text">El 23% de los alimentos presenta datos falsos sobre su origen. Las etiquetas no siempre reflejan la realidad de la cadena.</p>
           <div class="trend-indicator">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
@@ -182,27 +169,16 @@
       <!-- Problema 3: Pérdidas Operativas -->
       <div class="problem-split" data-theme="yellow">
         <div class="split-visual">
-          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&h=800&fit=crop&q=80" alt="Operational Losses">
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&h=800&fit=crop&q=80" alt="Operational Losses" loading="lazy">
           <div class="visual-gradient"></div>
-          <div class="visual-icon">
-            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/>
-              <polyline points="17 18 23 18 23 12"/>
-            </svg>
-          </div>
         </div>
         <div class="split-content">
           <div class="stat-mega">
             <div class="mega-number">30%</div>
             <div class="mega-label">Pérdidas Totales</div>
-            <div class="status-pill alert">
-              <span class="pulse-dot"></span>
-              Impacto Alto
-            </div>
           </div>
           <h3 class="problem-heading">Pérdidas Operativas</h3>
-          <div class="highlight-stat">30%</div>
-          <p class="problem-text">De pérdidas operativas se deben a falta de trazabilidad en la cadena. Sin visibilidad completa, es imposible identificar cuellos de botella y optimizar procesos.</p>
+          <p class="problem-text">El 30% de las pérdidas operativas proviene de la falta de trazabilidad. Sin visibilidad, es imposible optimizar procesos.</p>
           <div class="trend-indicator">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="12" y1="5" x2="12" y2="19"/>
@@ -216,29 +192,16 @@
       <!-- Problema 4: Desconfianza del Consumidor -->
       <div class="problem-split reverse" data-theme="cyan">
         <div class="split-visual">
-          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&h=800&fit=crop&q=80" alt="Consumer Distrust">
+          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&h=800&fit=crop&q=80" alt="Consumer Distrust" loading="lazy">
           <div class="visual-gradient"></div>
-          <div class="visual-icon">
-            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="8.5" cy="7" r="4"/>
-              <line x1="18" y1="8" x2="23" y2="13"/>
-              <line x1="23" y1="8" x2="18" y2="13"/>
-            </svg>
-          </div>
         </div>
         <div class="split-content">
           <div class="stat-mega">
             <div class="mega-number">68%</div>
             <div class="mega-label">Consumidores</div>
-            <div class="status-pill concern">
-              <span class="pulse-dot"></span>
-              Preocupante
-            </div>
           </div>
           <h3 class="problem-heading">Desconfianza del Consumidor</h3>
-          <div class="highlight-stat">68%</div>
-          <p class="problem-text">De consumidores desconfían de las etiquetas de productos alimenticios. La transparencia es cada vez más valorada y exigida por el mercado.</p>
+          <p class="problem-text">El 68% de los consumidores desconfía de las etiquetas. La transparencia real ya es una exigencia del mercado.</p>
           <div class="trend-indicator">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -344,8 +307,8 @@
   <!-- Caso de Uso - Timeline REDISEÑADO -->
   <section id="casos" class="casos">
     <div class="container">
-      <h2 class="section-title" data-i18n="usecase_title">Del Campo a tu Mesa: Un Viaje Transparente</h2>
-      <p class="section-subtitle" data-i18n="usecase_subtitle">Sigue el recorrido completo de un producto real desde su cosecha hasta tu mesa</p>
+      <h2 class="section-title">Del Campo a tu Mesa: Un Viaje Transparente</h2>
+      <p class="section-subtitle">Sigue el recorrido completo de un producto real desde su cosecha hasta tu mesa</p>
 
       <div class="timeline-new-wrapper">
         <!-- Smartphone Mockup MEJORADO -->
@@ -368,8 +331,8 @@
                       <i data-lucide="map-pin"></i>
                     </div>
                     <div class="feature-text">
-                      <h5 data-i18n="app_feature1_title">Origen Verificado</h5>
-                      <p data-i18n="app_feature1_desc">De la granja a tu mesa</p>
+                      <h5>Origen Verificado</h5>
+                      <p>De la granja a tu mesa</p>
                     </div>
                   </div>
 
@@ -378,8 +341,8 @@
                       <i data-lucide="shield-check"></i>
                     </div>
                     <div class="feature-text">
-                      <h5 data-i18n="app_feature2_title">Certificación Blockchain</h5>
-                      <p data-i18n="app_feature2_desc">Información inmutable y segura</p>
+                      <h5>Certificación Blockchain</h5>
+                      <p>Información inmutable y segura</p>
                     </div>
                   </div>
 
@@ -388,13 +351,13 @@
                       <i data-lucide="truck"></i>
                     </div>
                     <div class="feature-text">
-                      <h5 data-i18n="app_feature3_title">Seguimiento en Vivo</h5>
-                      <p data-i18n="app_feature3_desc">Rastrea tu producto en tiempo real</p>
+                      <h5>Seguimiento en Vivo</h5>
+                      <p>Rastrea tu producto en tiempo real</p>
                     </div>
                   </div>
                 </div>
 
-                <button class="cta-button" data-i18n="app_cta">
+                <button class="cta-button">
                   Escanear Código QR
                 </button>
               </div>
@@ -421,8 +384,8 @@
                 <i data-lucide="sprout"></i>
               </div>
               <div class="step-info">
-                <h3 data-i18n="usecase_step1_title">Granja Orgánica</h3>
-                <p data-i18n="usecase_step1_desc">Tomates cosechados el 15/03/2025 en Granja Solar, Valle de Cañete. Certificación orgánica EU validada.</p>
+                <h3>Granja Orgánica</h3>
+                <p>Tomates cosechados el 15/03/2025 en Granja Solar, Valle de Cañete. Certificación orgánica EU validada.</p>
               </div>
             </div>
 
@@ -431,8 +394,8 @@
                 <i data-lucide="package"></i>
               </div>
               <div class="step-info">
-                <h3 data-i18n="usecase_step2_title">Centro de Empaque</h3>
-                <p data-i18n="usecase_step2_desc">Procesamiento con estándares HACCP. Temperatura controlada a 4°C. Registro de calidad aprobado.</p>
+                <h3>Centro de Empaque</h3>
+                <p>Procesamiento con estándares HACCP. Temperatura controlada a 4°C. Registro de calidad aprobado.</p>
               </div>
             </div>
 
@@ -441,8 +404,8 @@
                 <i data-lucide="truck"></i>
               </div>
               <div class="step-info">
-                <h3 data-i18n="usecase_step3_title">Transporte Refrigerado</h3>
-                <p data-i18n="usecase_step3_desc">Cadena de frío mantenida. GPS tracking en tiempo real. Entrega verificada el 16/03/2025.</p>
+                <h3>Transporte Refrigerado</h3>
+                <p>Cadena de frío mantenida. GPS tracking en tiempo real. Entrega verificada el 16/03/2025.</p>
               </div>
             </div>
 
@@ -451,8 +414,8 @@
                 <i data-lucide="shopping-bag"></i>
               </div>
               <div class="step-info">
-                <h3 data-i18n="usecase_step4_title">Supermercado</h3>
-                <p data-i18n="usecase_step4_desc">Disponible en tienda desde el 17/03/2025. Escanea el QR para ver toda la historia del producto.</p>
+                <h3>Supermercado</h3>
+                <p>Disponible en tienda desde el 17/03/2025. Escanea el QR para ver toda la historia del producto.</p>
               </div>
             </div>
           </div>
@@ -464,23 +427,23 @@
   <!-- Segmentos Objetivo -->
   <section id="segmentos" class="segmentos">
     <div class="container">
-      <h2 class="section-title" data-i18n="segments_title">Diseñado para Cada Actor de la Cadena</h2>
+      <h2 class="section-title">Diseñado para Cada Actor de la Cadena</h2>
 
       <div class="tabs">
-        <button class="tab-btn active" data-tab="productores" data-i18n="segments_tab1">Productores</button>
-        <button class="tab-btn" data-tab="marcas" data-i18n="segments_tab2">Marcas</button>
-        <button class="tab-btn" data-tab="consumidores" data-i18n="segments_tab3">Consumidores</button>
+        <button class="tab-btn active" data-tab="productores">Productores</button>
+        <button class="tab-btn" data-tab="marcas">Marcas</button>
+        <button class="tab-btn" data-tab="consumidores">Consumidores</button>
       </div>
 
       <div class="tab-content active" data-content="productores">
         <div class="segment-layout">
           <div class="segment-text">
-            <h3 data-i18n="segments_prod_title">Para Productores</h3>
-            <p data-i18n="segments_prod_desc">Demuestra la calidad de tus productos y obtén mejores precios por tu trabajo transparente. Accede a mercados premium que valoran la trazabilidad.</p>
+            <h3>Para Productores</h3>
+            <p>Demuestra la calidad de tus productos y obtén mejores precios por tu trabajo transparente. Accede a mercados premium que valoran la trazabilidad.</p>
             <ul>
-              <li data-i18n="segments_prod_feat1">Certificaciones digitales verificables</li>
-              <li data-i18n="segments_prod_feat2">Acceso a mercados internacionales</li>
-              <li data-i18n="segments_prod_feat3">Mejor precio por transparencia</li>
+              <li>Certificaciones digitales verificables</li>
+              <li>Acceso a mercados internacionales</li>
+              <li>Mejor precio por transparencia</li>
             </ul>
           </div>
           <div class="segment-visual">
@@ -492,12 +455,12 @@
       <div class="tab-content" data-content="marcas">
         <div class="segment-layout">
           <div class="segment-text">
-            <h3 data-i18n="segments_brand_title">Para Marcas</h3>
-            <p data-i18n="segments_brand_desc">Protege tu reputación con trazabilidad completa. Responde a crisis alimentarias en minutos, no días. Construye confianza con transparencia total.</p>
+            <h3>Para Marcas</h3>
+            <p>Protege tu reputación con trazabilidad completa. Responde a crisis alimentarias en minutos, no días. Construye confianza con transparencia total.</p>
             <ul>
-              <li data-i18n="segments_brand_feat1">Gestión de recalls en tiempo real</li>
-              <li data-i18n="segments_brand_feat2">Auditorías automatizadas</li>
-              <li data-i18n="segments_brand_feat3">Marketing basado en confianza</li>
+              <li>Gestión de recalls en tiempo real</li>
+              <li>Auditorías automatizadas</li>
+              <li>Marketing basado en confianza</li>
             </ul>
           </div>
           <div class="segment-visual">
@@ -509,12 +472,12 @@
       <div class="tab-content" data-content="consumidores">
         <div class="segment-layout">
           <div class="segment-text">
-            <h3 data-i18n="segments_consumer_title">Para Consumidores</h3>
-            <p data-i18n="segments_consumer_desc">Conoce el origen real de lo que comes. Verifica certificaciones orgánicas, fair trade y métodos de producción con un simple escaneo.</p>
+            <h3>Para Consumidores</h3>
+            <p>Conoce el origen real de lo que comes. Verifica certificaciones orgánicas, fair trade y métodos de producción con un simple escaneo.</p>
             <ul>
-              <li data-i18n="segments_consumer_feat1">Escaneo QR instantáneo</li>
-              <li data-i18n="segments_consumer_feat2">Historia completa del producto</li>
-              <li data-i18n="segments_consumer_feat3">Certificaciones verificables</li>
+              <li>Escaneo QR instantáneo</li>
+              <li>Historia completa del producto</li>
+              <li>Certificaciones verificables</li>
             </ul>
           </div>
           <div class="segment-visual">
@@ -558,17 +521,15 @@
           <div class="flow-number">01</div>
           <div class="flow-icon">
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <ellipse cx="12" cy="5" rx="9" ry="3"/>
-              <path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/>
-              <path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/>
+              <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
             </svg>
           </div>
-          <h3>Recopilación de Datos</h3>
-          <p>Sensores IoT capturan datos en tiempo real desde el origen del producto</p>
+          <h3>Registro de Eventos</h3>
+          <p>Los productores, transportistas y todos los actores de la cadena registran cada evento (cosecha, empaque, envío) en nuestra plataforma.</p>
           <div class="flow-tags">
-            <span class="tag">IoT</span>
-            <span class="tag">Sensores</span>
-            <span class="tag">GPS</span>
+            <span class="tag">Productores</span>
+            <span class="tag">Transportistas</span>
+            <span class="tag">Distribuidores</span>
           </div>
         </div>
 
@@ -588,16 +549,17 @@
           <div class="flow-number">02</div>
           <div class="flow-icon">
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <path d="M9 12l2 2 4-4"/>
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
             </svg>
           </div>
-          <h3>Encriptación y Validación</h3>
-          <p>Los datos se encriptan con algoritmos de última generación</p>
+          <h3>Generación de Huella Digital</h3>
+          <p>Creamos una huella digital única (hash criptográfico) de cada evento registrado que sirve como prueba matemática.</p>
           <div class="flow-tags">
-            <span class="tag">AES-256</span>
-            <span class="tag">SSL/TLS</span>
-            <span class="tag">Hash</span>
+            <span class="tag">Hash SHA-256</span>
+            <span class="tag">Verificable</span>
+            <span class="tag">Único</span>
           </div>
         </div>
 
@@ -623,58 +585,63 @@
               <rect x="3" y="14" width="7" height="7"/>
             </svg>
           </div>
-          <h3>Registro Inmutable</h3>
-          <p>La información se almacena permanentemente en blockchain</p>
+          <h3>Anclaje en Blockchain</h3>
+          <p>La huella digital se ancla en blockchain, creando una prueba permanente y auditable de que la historia no ha sido alterada.</p>
           <div class="flow-tags">
-            <span class="tag">Ethereum</span>
-            <span class="tag">Smart Contract</span>
-            <span class="tag">DLT</span>
+            <span class="tag">Inmutable</span>
+            <span class="tag">Auditable</span>
+            <span class="tag">Permanente</span>
           </div>
         </div>
       </div>
 
-      <!-- Características técnicas -->
+      <!-- Beneficios Reales -->
       <div class="tech-features-grid">
         <div class="feature-box">
           <div class="feature-icon-wrapper">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
             </svg>
           </div>
-          <h4>Alta Velocidad</h4>
-          <p>Procesamiento de transacciones en menos de 3 segundos</p>
+          <h4>Trazabilidad Auditable</h4>
+          <p>Un historial completo y verificable de cada producto que no puede ser alterado ni falsificado.</p>
         </div>
 
         <div class="feature-box">
           <div class="feature-icon-wrapper">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
             </svg>
           </div>
-          <h4>Máxima Seguridad</h4>
-          <p>Certificaciones ISO 27001 y SOC 2 Type II</p>
+          <h4>Gestión de Crisis Quirúrgica</h4>
+          <p>Aísla lotes afectados en minutos, no semanas. Responde a crisis alimentarias con precisión.</p>
         </div>
 
         <div class="feature-box">
           <div class="feature-icon-wrapper">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="8.5" cy="7" r="4"/>
+              <line x1="20" y1="8" x2="20" y2="14"/>
+              <line x1="23" y1="11" x2="17" y1="11"/>
             </svg>
           </div>
-          <h4>99.9% Uptime</h4>
-          <p>Infraestructura redundante en múltiples regiones</p>
+          <h4>Transparencia Total</h4>
+          <p>Cada actor de la cadena puede verificar la autenticidad e integridad de la información.</p>
         </div>
 
         <div class="feature-box">
           <div class="feature-icon-wrapper">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M12 6v6l4 2"/>
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <line x1="9" y1="9" x2="15" y2="15"/>
+              <line x1="15" y1="9" x2="9" y2="15"/>
             </svg>
           </div>
-          <h4>Tiempo Real</h4>
-          <p>Sincronización instantánea en todos los nodos</p>
+          <h4>Prevención de Fraude</h4>
+          <p>La tecnología blockchain hace imposible alterar registros históricos de forma retroactiva.</p>
         </div>
 
         <div class="feature-box">
@@ -685,111 +652,95 @@
               <line x1="12" y1="22.08" x2="12" y2="12"/>
             </svg>
           </div>
-          <h4>Escalabilidad</h4>
-          <p>Hasta 10,000 transacciones por segundo</p>
+          <h4>Certificaciones Verificables</h4>
+          <p>Valida certificaciones orgánicas, fair trade y de calidad en segundos mediante blockchain.</p>
         </div>
 
         <div class="feature-box">
           <div class="feature-icon-wrapper">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
             </svg>
           </div>
-          <h4>APIs Abiertas</h4>
-          <p>Integración sencilla con sistemas existentes</p>
+          <h4>Confianza del Consumidor</h4>
+          <p>Los consumidores pueden verificar el origen y la historia completa de sus alimentos.</p>
         </div>
       </div>
 
-      <!-- CTA de tecnología -->
-      <div class="tech-cta">
-        <h3>¿Quieres conocer más sobre nuestra infraestructura?</h3>
-        <p>Descarga nuestro whitepaper técnico o agenda una demo con nuestro equipo</p>
-        <div class="tech-cta-buttons">
-          <button class="btn btn-primary">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            Descargar Whitepaper
-          </button>
-          <button class="btn btn-secondary">Agendar Demo Técnica</button>
-        </div>
-      </div>
-    </div>
+    </section>
   </section>
 
   <!-- Equipo -->
   <section id="equipo" class="equipo">
     <div class="container">
-      <h2 class="section-title" data-i18n="team_title">Nuestro Equipo</h2>
-      <p class="section-intro" data-i18n="team_intro">Expertos en blockchain, agroindustria y tecnología alimentaria trabajando para crear un sistema alimentario más transparente.</p>
+      <h2 class="section-title">Nuestro Equipo</h2>
+      <p class="section-intro">Expertos en blockchain, agroindustria y tecnología alimentaria trabajando para crear un sistema alimentario más transparente.</p>
 
       <div class="team-grid">
 
         <article class="team-member">
           <div class="member-photo">
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop" alt="Carlos Mendoza">
+            <img src="../assets/img/juan.jpeg" alt="Juan Fabritzio Pescoran Angulo" loading="lazy">
             <div class="member-overlay">
               <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
                 <i data-lucide="linkedin"></i>
               </a>
             </div>
           </div>
-          <h3 data-i18n="team_member1_name">Carlos Mendoza</h3>
-          <p data-i18n="team_member1_role">CEO & Co-Fundador</p>
+          <h3>Juan Fabritzio Pescoran Angulo</h3>
+          <p>CEO & Co-Fundador</p>
         </article>
 
         <article class="team-member">
           <div class="member-photo">
-            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop" alt="Ana García">
+            <img src="../assets/img/angelo.jpeg" alt="Angelo Marcio Curi Marcelo" loading="lazy">
             <div class="member-overlay">
               <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
                 <i data-lucide="linkedin"></i>
               </a>
             </div>
           </div>
-          <h3 data-i18n="team_member2_name">Ana García</h3>
-          <p data-i18n="team_member2_role">CTO</p>
+          <h3>Angelo Marcio Curi Marcelo</h3>
+          <p>CTO</p>
         </article>
 
         <article class="team-member">
           <div class="member-photo">
-            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop" alt="Roberto Silva">
+            <img src="../assets/img/brenda.jpeg" alt="Brenda Lucía Gamio Upiachihua" loading="lazy">
             <div class="member-overlay">
               <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
                 <i data-lucide="linkedin"></i>
               </a>
             </div>
           </div>
-          <h3 data-i18n="team_member3_name">Roberto Silva</h3>
-          <p data-i18n="team_member3_role">Head of Blockchain</p>
+          <h3>Brenda Lucía Gamio Upiachihua</h3>
+          <p>Head of Blockchain</p>
         </article>
 
         <article class="team-member">
           <div class="member-photo">
-            <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop" alt="María Torres">
+            <img src="../assets/img/Gustavo.jpeg" alt="Gustavo Esau Huanca Navarro" loading="lazy">
             <div class="member-overlay">
               <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
                 <i data-lucide="linkedin"></i>
               </a>
             </div>
           </div>
-          <h3 data-i18n="team_member4_name">María Torres</h3>
-          <p data-i18n="team_member4_role">Directora de Operaciones</p>
+          <h3>Gustavo Esau Huanca Navarro</h3>
+          <p>Director de Operaciones</p>
         </article>
 
         <article class="team-member">
           <div class="member-photo">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="Diego Ramírez">
+            <img src="../assets/img/diego.jpeg" alt="Diego Ulises Soto Quispe" loading="lazy">
             <div class="member-overlay">
               <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
                 <i data-lucide="linkedin"></i>
               </a>
             </div>
           </div>
-          <h3 data-i18n="team_member5_name">Diego Ramírez</h3>
-          <p data-i18n="team_member5_role">Director de Innovación</p>
+          <h3>Diego Ulises Soto Quispe</h3>
+          <p>Director de Innovación</p>
         </article>
 
       </div>
@@ -800,23 +751,23 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-cta">
-        <h2 data-i18n="footer_cta_title">¿Listo para Transformar tu Cadena Alimentaria?</h2>
-        <p data-i18n="footer_cta_subtitle">Agenda una demo personalizada y descubre cómo FoodChain puede ayudarte.</p>
+        <h2>¿Listo para Transformar tu Cadena Alimentaria?</h2>
+        <p>Agenda una demo personalizada y descubre cómo FoodChain puede ayudarte.</p>
 
         <form class="contact-form" id="contactForm">
-          <input type="text" name="name" placeholder="Nombre" data-i18n-placeholder="form_name" required>
-          <input type="email" name="email" placeholder="Email" data-i18n-placeholder="form_email" required>
-          <input type="text" name="company" placeholder="Empresa" data-i18n-placeholder="form_company" required>
-          <button type="submit" class="btn btn-primary" data-i18n="form_submit">Enviar Solicitud</button>
+          <input type="text" name="name" placeholder="Nombre" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="text" name="company" placeholder="Empresa" required>
+          <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
         </form>
       </div>
 
       <div class="footer-content">
         <div class="footer-nav">
-          <a href="#solucion" data-i18n="nav_solution">Solución</a>
-          <a href="#casos" data-i18n="nav_usecases">Casos de Uso</a>
-          <a href="#tecnologia" data-i18n="nav_technology">Tecnología</a>
-          <a href="#equipo" data-i18n="team_title">Equipo</a>
+          <a href="#solucion">Solución</a>
+          <a href="#casos">Casos de Uso</a>
+          <a href="#tecnologia">Tecnología</a>
+          <a href="#equipo">Equipo</a>
         </div>
 
         <div class="footer-social">
@@ -826,21 +777,29 @@
           <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter">
             <i data-lucide="twitter"></i>
           </a>
-          <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub">
+          <a href="https://github.com/G2-UPC-2520-7306-Emergentes" target="_blank" rel="noopener" aria-label="GitHub">
             <i data-lucide="github"></i>
           </a>
         </div>
 
         <div class="footer-legal">
-          <a href="#" data-i18n="footer_privacy">Privacidad</a>
-          <a href="#" data-i18n="footer_terms">Términos</a>
-          <p data-i18n="footer_copyright">© 2025 FoodChain. Todos los derechos reservados.</p>
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+          <p>© 2025 FoodChain. Todos los derechos reservados.</p>
         </div>
       </div>
     </div>
   </footer>
 
+  <!-- Botón Volver al Inicio -->
+  <button id="scrollToTop" class="scroll-to-top" aria-label="Volver al inicio">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+    <span class="scroll-to-top__label">Volver al inicio</span>
+  </button>
+
   <!-- Script -->
-  <script src="../js/main.js"></script>
+  <script src="../js/main.js" defer></script>
 </body>
 </html>
