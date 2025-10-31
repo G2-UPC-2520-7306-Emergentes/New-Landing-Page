@@ -286,7 +286,8 @@ button {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 100px;
+  /* moved slightly down as requested (+40px) */
+  padding-top: 140px;
   padding-bottom: 100px;
   overflow: hidden;
 }
@@ -420,7 +421,8 @@ button {
   gap: var(--spacing-md);
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: var(--spacing-xl);
+  /* moved the hero stats further down (+200px) */
+  margin-top: calc(var(--spacing-xl) + 200px);
 }
 
 .stat-item {
@@ -4004,6 +4006,8 @@ button {
 
   .hero-stats {
     flex-direction: column;
+    /* keep the same downward offset on small screens (+200px) */
+    margin-top: calc(var(--spacing-xl) + 200px);
   }
 
   .stat-item {
